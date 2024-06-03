@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Box, Typography } from '@material-ui/core';
+import { Button, TextField, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,8 @@ const RideBillGenerator = () => {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/getRideDetails');
+      // const response = await fetch('http://localhost:3001/getRideDetails');
+      const response = await fetch('https://ridebuddy.onrender.com/getRideDetails');
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }

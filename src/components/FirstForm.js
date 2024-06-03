@@ -35,7 +35,8 @@ function App() {
       ridesPerDay:homeToOfficeValue+officeToHomeValue
     };
 
-    fetch('http://localhost:3001/submit', {
+    // fetch('http://localhost:3001/submit', {
+      fetch('https://ridebuddy.onrender.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
