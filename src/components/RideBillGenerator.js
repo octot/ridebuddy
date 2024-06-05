@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, TextField, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import LoadingScreen from './LoadingScreen';
+import './RideBillGenerator.css'
 const useStyles = makeStyles((theme) => ({
   formField: {
     margin: theme.spacing(3, 0), // Increased the margin to 3 spacing units
@@ -19,8 +19,8 @@ const RideBillGenerator = () => {
   }, []);
   const fetchData = async () => {
     try {
-      // const response = await fetch('http://localhost:3001/getRideDetails');
-      const response = await fetch('https://ridebuddy.onrender.com/getRideDetails');
+      const response = await fetch('http://localhost:3001/getRideDetails');
+      // const response = await fetch('https://ridebuddy.onrender.com/getRideDetails');
       if (!response.ok) {
         throw new Error('Failed to fetch data');
       }
@@ -59,7 +59,22 @@ const RideBillGenerator = () => {
     }
     alert("Form submitted successfully!");
   };
-
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3001/delete/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete ride');
+      }
+      alert('Ride deleted successfully!');
+      // Refresh ride details after delete
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting ride:', error);
+      alert('Failed to delete ride.');
+    }
+  };
   const filteredRidesByDate = filterRideDataByDate(rideDetails, fromDate, toDate);
   const rideTotalAmount = totalRideAmount(filteredRidesByDate, ratePerRide)
   console.log("filteredRidesByDate ", filteredRidesByDate)
@@ -80,15 +95,7 @@ const RideBillGenerator = () => {
       .catch((err) => {
         console.error('Failed to copy text: ', err);
       });
-
-
-
   }
-
-
-
-
-
   const containerContent = (
     <div className='generatedReport'>
       <div className='scrollable-generatedReport'>
@@ -96,18 +103,22 @@ const RideBillGenerator = () => {
           <div className="grid-header">
             <div className="grid-header-item">Date</div>
             <div className="grid-header-item">Rides Per Day</div>
+            <div className="grid-header-item">Action</div>
           </div>
-          <div className="grid-body">
+          <div className="grid">
             {Array.isArray(filteredRidesByDate) && filteredRidesByDate.length > 0 ? (
               filteredRidesByDate.map((ride, index) => (
                 <div className="grid-row" key={index}>
                   <div className="grid-item">{ride.date}</div>
                   <div className="grid-item">{ride.ridesPerDay}</div>
+                  <Button variant="contained"
+                    className="delete-button"
+                    onClick={() => handleDelete(ride._id)}>Delete</Button>
                 </div>
               ))
             ) : (
               <div className="grid-row no-rides">
-                <div className="grid-item" colSpan="2">No rides available</div>
+                <div className="grid-item" colSpan="4">No rides available</div>
               </div>
             )}
           </div>
@@ -117,7 +128,6 @@ const RideBillGenerator = () => {
         <p>RideTotalAmount: {rideTotalAmount}</p>
       </div>
     </div>
-
   );
   return (
     <div>
@@ -156,14 +166,14 @@ const RideBillGenerator = () => {
           fullWidth
         />
       </Box>
-      <h1 style={{textAlign:'center'}}>Generated Ride Report</h1>
+      <h1 style={{ textAlign: 'center' }}>Generated Ride Report</h1>
       <div>
         {containerContent}
         <Box style={{ textAlign: 'center' }}
-        sx={{ mt: 3, display: 'flex', justifyContent: 'center', width: '100%' }}>
-        <Button onClick={copyToClipboard}  variant="contained" color="primary" type="submit">
-          {copied ? 'Copied!' : 'Copy Generated Ride Report'}
-        </Button>
+          sx={{ mt: 3, display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <Button onClick={copyToClipboard} variant="contained" color="primary" type="submit">
+            {copied ? 'Copied!' : 'Copy Generated Ride Report'}
+          </Button>
         </Box>
       </div>
     </div>

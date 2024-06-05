@@ -29,7 +29,8 @@ const dataSchema = new mongoose.Schema({
   date: String,
   homeToOffice: Number,
   officeToHome: Number,
-  ridesPerDay: Number
+  ridesPerDay: Number,
+  submitDate:String
 });
 
 // Define a model
@@ -42,7 +43,8 @@ app.post('/submit', async (req, res) => {
       date: req.body.date,
       homeToOffice: req.body.homeToOffice,
       officeToHome: req.body.officeToHome,
-      ridesPerDay: req.body.homeToOffice + req.body.officeToHome
+      ridesPerDay: req.body.homeToOffice + req.body.officeToHome,
+      submitDate:req.body.submitDate
     });
 
     await newData.save();
@@ -69,6 +71,21 @@ app.get('/getRideDetails', async (req, res) => {
     }
   }
 });
+// Define a route to delete data (DELETE)
+app.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Data.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Data deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting data:', error);
+    res.status(500).json({ error: 'Error deleting data' });
+  }
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
