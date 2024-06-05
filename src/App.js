@@ -3,7 +3,8 @@ import FirstForm from './components/FirstForm';
 import RideBillGenerator from './components/RideBillGenerator';
 import './App.css'
 import BackArrow from './components/backarrow.png';
-import { Button,Typography,Box } from '@material-ui/core';
+import { Button, Typography, Box } from '@material-ui/core';
+import LoadingScreen from './components/LoadingScreen';
 function App() {
   const [showComponent, setShowComponent] = useState('firstForm');
   const handleFirstFormSubmit = (date, homeToOffice, officeToHome) => {
@@ -26,14 +27,14 @@ function App() {
             textAlign: 'center',
             marginTop: '15px'
           }}>
-                  <Box style={{ textAlign: 'center' }}
-        sx={{ mt: 3, display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <Button  variant="contained" color="secondary" onClick={() => setShowComponent('rideBillGenerator')
-            }
-            
-            >
-              Generate Ride Bill
-            </Button>
+            <Box style={{ textAlign: 'center' }}
+              sx={{ mt: 3, display: 'flex', justifyContent: 'center', width: '100%' }}>
+              <Button variant="contained" color="secondary" 
+              onClick={() => setShowComponent('rideBillGenerator')
+              }
+              >
+                Generate Ride Bill
+              </Button>
             </Box>
           </div>
         </div>

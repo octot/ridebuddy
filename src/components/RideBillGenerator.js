@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, TextField, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import LoadingScreen from './LoadingScreen';
 const useStyles = makeStyles((theme) => ({
   formField: {
     margin: theme.spacing(3, 0), // Increased the margin to 3 spacing units
@@ -155,12 +155,6 @@ const RideBillGenerator = () => {
           variant="outlined"
           fullWidth
         />
-      </Box>
-      <Box style={{ textAlign: 'center' }}
-        sx={{ mt: 3, display: 'flex', justifyContent: 'center', width: '100%' }}>
-        <Button onClick={handleSubmit} variant="contained" color="primary" type="submit">
-          Submit
-        </Button>
       </Box>
       <h1 style={{textAlign:'center'}}>Generated Ride Report</h1>
       <div>
