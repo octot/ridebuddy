@@ -1,0 +1,111 @@
+.scrollable-generatedReport {
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    max-height: 100%;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    /* Ensure children stack vertically */
+    width: 100%;
+    /* Ensure content takes the full width */
+  }
+  
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width:100%;
+    margin: 0 auto;
+  }
+  
+  .grid-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .grid-header-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .grid-row {
+    margin-left: 10;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #fffefe;
+    border-radius: 5px;
+    background-color: #8acdea;
+  }
+  
+  
+  .grid-header-item:nth-child(1),
+  .grid-item:nth-child(1) {
+    flex: 2;
+  }
+  
+  
+  .grid-item {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .grid-item:first-child {
+    flex: 2;
+  }
+  
+  .edit-button,
+  .delete-button {
+    width: 40px;   /* Ensured consistent width */
+    height: 30px;  /* Ensured consistent height */
+    padding: 5px 10px;
+    margin: 0 5px !important;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    
+  }
+  /* Changed color for the Edit button */
+  .edit-button {
+    background-color: #28a745 !important;
+    color: white; /* Ensured text color is white */
+  }
+  
+  /* Changed color for the Delete button */
+  .delete-button {
+    background-color: #dc3545 !important; /* New red color */
+    color: white; /* Ensured text color is white */
+  }
+  
+  /* Updated hover color for the Edit button */
+  .edit-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  /* Updated hover color for the Delete button */
+  .delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+  
+  .no-rides .grid-item {
+    flex: 1 100%;
+    text-align: center;
+  }
+  .ride-total-amount {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect */
+  }
+  
