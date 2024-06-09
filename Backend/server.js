@@ -74,7 +74,6 @@ app.get('/getRideDetails', async (req, res) => {
 // Define a route to delete data (DELETE)
 app.delete('/delete/:id', async (req, res) => {
   const { id } = req.params;
-
   try {
     await Data.findByIdAndDelete(id);
     res.status(200).json({ message: 'Data deleted successfully' });
@@ -83,7 +82,23 @@ app.delete('/delete/:id', async (req, res) => {
     res.status(500).json({ error: 'Error deleting data' });
   }
 });
-
+app.put('/update/:id', async (req, res) => {
+  try {
+    console.log("req.params.id ",req.params.id ,"req.body ",req.body,)
+    const ride = await Data.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    console.log("updatedRide ",ride)
+    if (!ride) {
+      return res.status(404).send('Ride not found');
+    }
+    res.send(ride);
+  } catch (error) {
+    res.status(500).send('Error updating ride: ' + error.message);
+  }
+});
 
 
 

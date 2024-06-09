@@ -1,71 +1,63 @@
+.generatedReport {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .scrollable-generatedReport {
-    border: 1px solid rgb(0, 0, 0);
-    text-align: center;
-    max-height: 100%;
-    overflow-y: auto;
-    /* Enable vertical scrolling */
-    display: flex;
-    flex-direction: column;
-    /* Ensure children stack vertically */
-    width: 100%;
-    /* Ensure content takes the full width */
-  }
-  
-  .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width:100%;
-    margin: 0 auto;
-  }
-  
-  .grid-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    background-color: #007BFF;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .grid-header-item {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .grid-row {
-    margin-left: 10;
-    align-items: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #fffefe;
-    border-radius: 5px;
-    background-color: #8acdea;
-  }
-  
-  
-  .grid-header-item:nth-child(1),
-  .grid-item:nth-child(1) {
-    flex: 2;
-  }
-  
-  
-  .grid-item {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .grid-item:first-child {
-    flex: 2;
-  }
-  
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #8acdea;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.grid-header-item {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.grid {
+  margin-top: 10px;
+}
+
+.grid-row {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #fffefe;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.grid-item {
+  flex: 1;
+  text-align: center;
+}
+
+.grid-item input {
+  width: 100%;
+}
+.no-rides {
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+}
   .edit-button,
   .delete-button {
-    width: 40px;   /* Ensured consistent width */
-    height: 30px;  /* Ensured consistent height */
+    width: 10px !important;   /* Ensured consistent width */
+    height: 25px;  /* Ensured consistent height */
     padding: 5px 10px;
     margin: 0 5px !important;
     border: none;
@@ -90,7 +82,6 @@
     background-color: #218838; /* Darker green on hover */
   }
   
-  /* Updated hover color for the Delete button */
   .delete-button:hover {
     background-color: #c82333; /* Darker red on hover */
   }
@@ -98,14 +89,15 @@
   .no-rides .grid-item {
     flex: 1 100%;
     text-align: center;
-  }
+  }  
   .ride-total-amount {
     text-align: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #333;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect */
+  
   }
   

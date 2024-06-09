@@ -1,7 +1,7 @@
 export const fetchData = async (setRideDetails) => {
   try {
-    const response = await fetch('http://localhost:3001/getRideDetails');
-    // const response = await fetch('https://ridebuddy.onrender.com/getRideDetails');
+    // const response = await fetch('http://localhost:3001/getRideDetails');
+    const response = await fetch('https://ridebuddy.onrender.com/getRideDetails');
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -49,7 +49,8 @@ export const handleSubmit = (fromDate, toDate, ratePerRide) => {
 
 export const handleDelete = async (id, fetchData, setRideDetails) => {
   try {
-    const response = await fetch(`http://localhost:3001/delete/${id}`, {
+    const response = await fetch(`https://ridebuddy.onrender.com/delete/${id}`, {
+      // const response = await fetch(`http://localhost:3001/delete/${id}`, {
       method: 'DELETE',
     });
     if (!response.ok) {
